@@ -15,4 +15,4 @@ How to use:
 - you can view the current pairing as TXT file (for printing) or all completed games as TXT file (for printing)
 - you can right-click on the rankings and view the selected player's completed games
 
-![Solve](https://i.ibb.co/Z2kvNrC/Untitled.png)
+![Solve](https://i.ibb.co/QbYWQyp/demo.png)
