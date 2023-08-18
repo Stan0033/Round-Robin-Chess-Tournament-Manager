@@ -31,13 +31,14 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             button6 = new Button();
-            listBox1 = new ListBox();
+            listBox_players = new ListBox();
             button4 = new Button();
             button5 = new Button();
             textBox1 = new TextBox();
             label2 = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            label1 = new Label();
             button_start_tournament = new Button();
             tabPage2 = new TabPage();
             group_CurrentPairs = new GroupBox();
@@ -48,7 +49,6 @@
             listBox_standings = new ListBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
             showGamesToolStripMenuItem = new ToolStripMenuItem();
-            label1 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -70,16 +70,16 @@
             button6.UseVisualStyleBackColor = true;
             button6.Click += Delete_Click;
             // 
-            // listBox1
+            // listBox_players
             // 
-            listBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 20;
-            listBox1.Location = new Point(6, 5);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(224, 264);
-            listBox1.TabIndex = 4;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            listBox_players.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            listBox_players.FormattingEnabled = true;
+            listBox_players.ItemHeight = 20;
+            listBox_players.Location = new Point(6, 5);
+            listBox_players.Name = "listBox_players";
+            listBox_players.Size = new Size(224, 264);
+            listBox_players.TabIndex = 4;
+            listBox_players.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // button4
             // 
@@ -140,7 +140,7 @@
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(button_start_tournament);
             tabPage1.Controls.Add(button6);
-            tabPage1.Controls.Add(listBox1);
+            tabPage1.Controls.Add(listBox_players);
             tabPage1.Controls.Add(textBox1);
             tabPage1.Controls.Add(button4);
             tabPage1.Controls.Add(button5);
@@ -150,6 +150,16 @@
             tabPage1.Size = new Size(920, 481);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Setup";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(454, 8);
+            label1.Name = "label1";
+            label1.Size = new Size(260, 45);
+            label1.TabIndex = 10;
+            label1.Text = "Add an amount of players in the list (4 or more).\r\nThen click \"Start Tournament\"\r\nYou can hit enter for faster Adding.";
             // 
             // button_start_tournament
             // 
@@ -261,16 +271,6 @@
             showGamesToolStripMenuItem.Text = "Show Games";
             showGamesToolStripMenuItem.Click += showGamesToolStripMenuItem_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(454, 8);
-            label1.Name = "label1";
-            label1.Size = new Size(288, 45);
-            label1.TabIndex = 10;
-            label1.Text = "Add an even amount of players in the list (4 or more).\r\nThen click \"Start Tournament\"\r\nYou can hit enter for faster Adding.";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -298,7 +298,7 @@
         #endregion
 
         private Button button6;
-        private ListBox listBox1;
+        private ListBox listBox_players;
         private Button button4;
         private Button button5;
         private TextBox textBox1;

@@ -9,6 +9,7 @@ namespace Chess_Tournament_Calculator
     public class Player
     {
        public string Name { get; set; }
+        public double FIDE_Rating { get; set; }
 
     }
 }

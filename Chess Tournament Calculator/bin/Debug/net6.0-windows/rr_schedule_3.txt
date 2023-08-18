@@ -1,4 +1,5 @@
 Pairings for round 4:
 
-1. stan one - stan four
-2. stan two - stan three
+1. BYE - stan two
+2. stan three - stan one
+3. stan four - stan five

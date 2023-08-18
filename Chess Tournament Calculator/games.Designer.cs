@@ -28,9 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Games_Display));
             listBox1 = new ListBox();
             richTextBox1 = new RichTextBox();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            copyToolStripMenuItem = new ToolStripMenuItem();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // listBox1
@@ -54,6 +58,19 @@
             richTextBox1.TabIndex = 1;
             richTextBox1.Text = "";
             // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { copyToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(181, 48);
+            // 
+            // copyToolStripMenuItem
+            // 
+            copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            copyToolStripMenuItem.Size = new Size(180, 22);
+            copyToolStripMenuItem.Text = "Copy";
+            copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
+            // 
             // Games_Display
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -66,6 +83,7 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "Game of player";
             Load += games_Load;
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -73,5 +91,7 @@
 
         private ListBox listBox1;
         private RichTextBox richTextBox1;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem copyToolStripMenuItem;
     }
 }

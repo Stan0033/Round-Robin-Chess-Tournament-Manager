@@ -9,8 +9,10 @@ namespace Chess_Tournament_Calculator
     {
         List<Player>? Players;
         Dictionary<Player, List<Game>> Games;
+        int OddPlayers;
         int Current_Round;
         int count_games_this_round;
+        int Real_Pairs;
         List<List<string>> schedule;
         public Form1()
         {
@@ -20,6 +22,8 @@ namespace Chess_Tournament_Calculator
             Current_Round = 0;
             schedule = new List<List<string>>();
             count_games_this_round = 0;
+            OddPlayers=0;
+            Real_Pairs = 0;
 
         }
         private void Add_Click(object sender, EventArgs e)
@@ -29,18 +33,18 @@ namespace Chess_Tournament_Calculator
             if (!ValidName) { return; }
 
             bool met = false;
-            foreach (string field in listBox1.Items)
+            foreach (string field in listBox_players.Items)
             {
                 if (field == name) { met = true; }
             }
             if (met) { MessageBox.Show("already entered"); }
             else
             {
-                listBox1.Items.Add(name);
+                listBox_players.Items.Add(name);
 
             }
             textBox1.Text = string.Empty;
-            if (listBox1.Items.Count >= 4 && listBox1.Items.Count % 2 == 0)
+            if (listBox_players.Items.Count >= 4  )
             {
                 button_start_tournament.Enabled = true;
             }
@@ -84,14 +88,14 @@ namespace Chess_Tournament_Calculator
         }
         private void Edit_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItems.Count == 1)
+            if (listBox_players.SelectedItems.Count == 1)
             {
                 string name = textBox1.Text;
                 bool ValidName = ValidateInput(name);
                 if (ValidName)
                 {
-                    int pos = listBox1.SelectedIndex;
-                    listBox1.Items[pos] = textBox1.Text;
+                    int pos = listBox_players.SelectedIndex;
+                    listBox_players.Items[pos] = textBox1.Text;
                     textBox1.Text = string.Empty;
                 }
 
@@ -101,13 +105,13 @@ namespace Chess_Tournament_Calculator
 
         private void Delete_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItems.Count == 1)
+            if (listBox_players.SelectedItems.Count == 1)
             {
-                int pos = listBox1.SelectedIndex;
-                listBox1.Items.RemoveAt(pos);
+                int pos = listBox_players.SelectedIndex;
+                listBox_players.Items.RemoveAt(pos);
 
             }
-            if (listBox1.Items.Count >= 4 && listBox1.Items.Count % 2 == 0)
+            if (listBox_players.Items.Count >= 4 )
             {
                 button_start_tournament.Enabled = true;
             }
@@ -119,10 +123,10 @@ namespace Chess_Tournament_Calculator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (listBox1.Items.Count >= 4 && listBox1.Items.Count % 2 == 0)
+            if (listBox_players.Items.Count >= 4  )
             {
                 List<string> list = new List<string>();
-                foreach (string field in listBox1.Items) { list.Add(field); }
+                foreach (string field in listBox_players.Items) { list.Add(field); }
 
 
             }
@@ -139,10 +143,10 @@ namespace Chess_Tournament_Calculator
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = listBox1.SelectedIndex;
+            int index = listBox_players.SelectedIndex;
             if (index >= 0)
             {
-                textBox1.Text = listBox1.Items[index].ToString();
+                textBox1.Text = listBox_players.Items[index].ToString();
             }
         }
 
@@ -155,18 +159,18 @@ namespace Chess_Tournament_Calculator
                 if (!ValidName) { return; }
 
                 bool met = false;
-                foreach (string field in listBox1.Items)
+                foreach (string field in listBox_players.Items)
                 {
                     if (field == name) { met = true; }
                 }
                 if (met) { MessageBox.Show("already entered"); }
                 else
                 {
-                    listBox1.Items.Add(name);
+                    listBox_players.Items.Add(name);
 
                 }
                 textBox1.Text = string.Empty;
-                if (listBox1.Items.Count >= 4 && listBox1.Items.Count % 2 == 0)
+                if (listBox_players.Items.Count >= 4  )
                 {
                     button_start_tournament.Enabled = true;
                 }
@@ -182,11 +186,26 @@ namespace Chess_Tournament_Calculator
 
         private void Start_Tournament_click(object sender, EventArgs e)
         {
+            
             tabControl1.TabPages[0].Enabled = false;
             tabControl1.TabPages[1].Enabled = true;
             tabControl1.SelectedTab = tabControl1.TabPages[1];
-            foreach (string field in listBox1.Items)
+            if (listBox_players.Items.Count % 2 != 0)
             {
+                Player bye = new Player();
+                bye.Name = "BYE";
+                Players.Add(bye);
+                Games.Add(bye, new List<Game>());
+                OddPlayers = 1;
+                Real_Pairs = (listBox_players.Items.Count - 1) / 2;
+            }
+            else
+            {
+                Real_Pairs = listBox_players.Items.Count  / 2;
+            }
+            foreach (string field in listBox_players.Items)
+            {
+
                 Player P = new Player();
                 P.Name = field;
                 Players.Add(P);
@@ -198,16 +217,45 @@ namespace Chess_Tournament_Calculator
 
             tabControl1.TabPages[1].Text = $"Round {Current_Round + 1}/{Players.Count}";
             schedule = GenerateRoundRobinSchedule(Players);
+           
             GenerateButtonsForPlayers(Current_Round);
             // MessageBox.Show(schedule[0].Count.ToString() + " pairings");
             //  MessageBox.Show(Games. + " players");
         }
         public void GenerateButtonsForPlayers(int whichRound)
         {
+             
             int forname = 0;
             int currentPosition = 10;
             foreach (string pair in schedule[whichRound])
             {
+                if (pair.Contains("BYE"))
+                {
+                    string[] players = pair.Split(" - ");
+                    int byeIndex = players[0] == "BYE"? 0 : 1;
+                    int playerIndex = players[0] == "BYE" ? 1 : 0;
+                    Game byeGame = new Game();
+                    byeGame.Player_White = players[0];
+                    byeGame.Player_Black = players[1];
+                    byeGame.Result = playerIndex == 0 ? 1 : 0;
+                    byeGame.Decisive_Reason = "Forfeit";
+
+                    foreach (var player in Games)
+                    {
+                        if (player.Key.Name == players[playerIndex])
+                        {
+                            Games[player.Key].Add(byeGame);
+
+                        }
+                        if (player.Key.Name == players[byeIndex])
+                        {
+                            Games[player.Key].Add(byeGame);
+
+                        }
+                    }
+                    
+                    continue;
+                }
                 ButtonForPair button = new ButtonForPair();
                 //group_CurrentPairs.Controls.Add(button);
                 button.Height = 50;
@@ -231,14 +279,14 @@ namespace Chess_Tournament_Calculator
         }
         public void DecideResultOfPair(object sender, EventArgs e)
         {
-            ButtonForPair t = (ButtonForPair)sender;
+            ButtonForPair clickedButton = (ButtonForPair)sender;
             using (var dg = new enterresult())
             {
                 dg.ShowDialog(this);
                 if (dg.DialogResult == DialogResult.OK)
                 {
-                    string white = t.Text.Split(" - ")[0];
-                    string black = t.Text.Split(" - ")[1];
+                    string white = clickedButton.Text.Split(" - ")[0];
+                    string black = clickedButton.Text.Split(" - ")[1];
                     Game game = new Game();
 
                     if (dg.button_whitewin.Checked) { game.Result = 1.0; game.Decisive_Reason = dg.reason; }
@@ -255,11 +303,11 @@ namespace Chess_Tournament_Calculator
                     }
                     //--------------------------------------
                     Refresh_Standings();
-                    panel_Pairings.Controls.Remove(t);
+                    panel_Pairings.Controls.Remove(clickedButton);
                     count_games_this_round += 1;
                     //--------------------------------------
 
-                    if (count_games_this_round == Players.Count / 2)
+                    if (count_games_this_round - OddPlayers == Real_Pairs / 2)
                     // if the rounds played are ==equal to the players, then it's tiem for new round
                     {
                         Current_Round++;
@@ -294,8 +342,10 @@ namespace Chess_Tournament_Calculator
             {
                 //  MessageBox.Show(player.Value.Count.ToString());
                 double score = 0;
+                if (player.Key.Name == "BYE") { continue; }
                 foreach (var game in player.Value)
                 {
+                    
                     if (game.Player_White == player.Key.Name)
                     {
                         if (game.Result == 1) { score += 1; }
@@ -376,7 +426,7 @@ namespace Chess_Tournament_Calculator
             {
                 int index = listBox_standings.SelectedIndex;
                 if (index < 0) { return; }
-                string name = listBox1.Items[index].ToString().Split(" - ")[0];
+                string name = listBox_players.Items[index].ToString().Split(" - ")[0];
                 var dialog = new Games_Display();
                 dialog.Text = "Games of " + name;
                 foreach (var v in Games)
@@ -402,6 +452,10 @@ namespace Chess_Tournament_Calculator
 
         private void ViewPairingsTXT_Click(object sender, EventArgs e)
         {
+            if (tabControl1.TabPages[1].Text.Contains("over"))
+            {
+                return;
+            }
             string filename = $"rr_schedule_{Current_Round}.txt";
 
             using (StreamWriter writer = new StreamWriter(filename))
@@ -421,6 +475,8 @@ namespace Chess_Tournament_Calculator
 
         private void ViewCompletedGamesTXT_Click(object sender, EventArgs e)
         {
+           // MessageBox.Show(Games[Games.Keys.FirstOrDefault(x => x.Name == "BYE")].Count.ToString());
+            //return;
             string content = string.Empty;
             string filename = "past_games.txt";
 
