@@ -43,13 +43,13 @@
             tabPage2 = new TabPage();
             group_CurrentPairs = new GroupBox();
             panel_Pairings = new Panel();
+            button3 = new Button();
             button2 = new Button();
             button1 = new Button();
             groupBox1 = new GroupBox();
             listBox_standings = new ListBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
             showGamesToolStripMenuItem = new ToolStripMenuItem();
-            button3 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -138,6 +138,8 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.FromArgb(64, 64, 64);
+            tabPage1.BackgroundImage = (Image)resources.GetObject("tabPage1.BackgroundImage");
+            tabPage1.BackgroundImageLayout = ImageLayout.Stretch;
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(button_start_tournament);
             tabPage1.Controls.Add(button6);
@@ -155,6 +157,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.ForeColor = Color.White;
             label1.Location = new Point(454, 8);
             label1.Name = "label1";
@@ -210,6 +213,18 @@
             panel_Pairings.Size = new Size(556, 453);
             panel_Pairings.TabIndex = 0;
             // 
+            // button3
+            // 
+            button3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.ForeColor = Color.Black;
+            button3.Location = new Point(3, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(478, 32);
+            button3.TabIndex = 2;
+            button3.Text = "Tiebreaks detected. Start a tiebreaks tournament?";
+            button3.UseVisualStyleBackColor = true;
+            button3.Visible = false;
+            // 
             // button2
             // 
             button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -250,9 +265,11 @@
             // 
             // listBox_standings
             // 
+            listBox_standings.BackColor = Color.FromArgb(64, 64, 64);
             listBox_standings.ContextMenuStrip = contextMenuStrip1;
             listBox_standings.Dock = DockStyle.Fill;
             listBox_standings.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            listBox_standings.ForeColor = Color.White;
             listBox_standings.FormattingEnabled = true;
             listBox_standings.ItemHeight = 25;
             listBox_standings.Location = new Point(3, 19);
@@ -272,18 +289,6 @@
             showGamesToolStripMenuItem.Size = new Size(142, 22);
             showGamesToolStripMenuItem.Text = "Show Games";
             showGamesToolStripMenuItem.Click += showGamesToolStripMenuItem_Click;
-            // 
-            // button3
-            // 
-            button3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.ForeColor = Color.Black;
-            button3.Location = new Point(3, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(478, 32);
-            button3.TabIndex = 2;
-            button3.Text = "Tiebreaks detected. Start a tiebreaks tournament?";
-            button3.UseVisualStyleBackColor = true;
-            button3.Visible = false;
             // 
             // Form1
             // 

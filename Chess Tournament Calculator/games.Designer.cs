@@ -39,7 +39,9 @@
             // 
             // listBox1
             // 
+            listBox1.BackColor = Color.FromArgb(64, 64, 64);
             listBox1.Dock = DockStyle.Left;
+            listBox1.ForeColor = Color.White;
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
             listBox1.Location = new Point(0, 0);
@@ -50,7 +52,9 @@
             // 
             // richTextBox1
             // 
+            richTextBox1.BackColor = Color.FromArgb(64, 64, 64);
             richTextBox1.Dock = DockStyle.Fill;
+            richTextBox1.ForeColor = Color.White;
             richTextBox1.Location = new Point(390, 0);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
@@ -62,12 +66,12 @@
             // 
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { copyToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(181, 48);
+            contextMenuStrip1.Size = new Size(103, 26);
             // 
             // copyToolStripMenuItem
             // 
             copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            copyToolStripMenuItem.Size = new Size(180, 22);
+            copyToolStripMenuItem.Size = new Size(102, 22);
             copyToolStripMenuItem.Text = "Copy";
             copyToolStripMenuItem.Click += copyToolStripMenuItem_Click;
             // 

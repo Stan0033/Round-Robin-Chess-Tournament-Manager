@@ -36,3 +36,4 @@ C:\Users\35987\source\repos\Chess Tournament Calculator\Round-Robin-Chess-Tourna
 C:\Users\35987\source\repos\Chess Tournament Calculator\Round-Robin-Chess-Tournament-Manager\Chess Tournament Calculator\obj\Debug\net6.0-windows\Chess Tournament Calculator.pdb
 C:\Users\35987\source\repos\Chess Tournament Calculator\Round-Robin-Chess-Tournament-Manager\Chess Tournament Calculator\obj\Debug\net6.0-windows\Chess Tournament Calculator.genruntimeconfig.cache
 C:\Users\35987\source\repos\Chess Tournament Calculator\Round-Robin-Chess-Tournament-Manager\Chess Tournament Calculator\obj\Debug\net6.0-windows\ref\Chess Tournament Calculator.dll
+C:\Users\35987\source\repos\Chess Tournament Calculator\Round-Robin-Chess-Tournament-Manager\Chess Tournament Calculator\obj\Debug\net6.0-windows\Chess_Tournament_Calculator.Properties.Resources.resources
