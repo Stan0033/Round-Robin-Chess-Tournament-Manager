@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\35987\\source\\repos\\Chess Tournament Calculator\\Chess Tournament Calculator\\Chess Tournament Calculator.csproj",
+      "projectUniqueName": "C:\\Users\\35987\\source\\repos\\Chess Tournament Calculator\\Round-Robin-Chess-Tournament-Manager\\Chess Tournament Calculator\\Chess Tournament Calculator.csproj",
       "projectName": "Chess Tournament Calculator",
-      "projectPath": "C:\\Users\\35987\\source\\repos\\Chess Tournament Calculator\\Chess Tournament Calculator\\Chess Tournament Calculator.csproj",
+      "projectPath": "C:\\Users\\35987\\source\\repos\\Chess Tournament Calculator\\Round-Robin-Chess-Tournament-Manager\\Chess Tournament Calculator\\Chess Tournament Calculator.csproj",
       "packagesPath": "C:\\Users\\35987\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\35987\\source\\repos\\Chess Tournament Calculator\\Chess Tournament Calculator\\obj\\",
+      "outputPath": "C:\\Users\\35987\\source\\repos\\Chess Tournament Calculator\\Round-Robin-Chess-Tournament-Manager\\Chess Tournament Calculator\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\35987\\AppData\\Roaming\\NuGet\\NuGet.Config",

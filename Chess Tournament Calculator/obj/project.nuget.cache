@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MDJhcJb/LfCxsRwPpRTdmMHxhFIEFKlc4/g67Ha9cHTJPp+i5xblotf9EbNuzS43489kQukl0fKluA4RxKcI8Q==",
+  "dgSpecHash": "BUMrcO5O8SW8oQDh1/iQNjUphERhu1/fgqmFqY0cYQofvCMsQr1oFd5wFsleIX3GXf7RMuSqtziWSDvVQsZrUQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\35987\\source\\repos\\Chess Tournament Calculator\\Chess Tournament Calculator\\Chess Tournament Calculator.csproj",
+  "projectFilePath": "C:\\Users\\35987\\source\\repos\\Chess Tournament Calculator\\Round-Robin-Chess-Tournament-Manager\\Chess Tournament Calculator\\Chess Tournament Calculator.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -48,6 +48,7 @@
             listBox_standings = new ListBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
             showGamesToolStripMenuItem = new ToolStripMenuItem();
+            label1 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -136,6 +137,7 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.FromArgb(64, 64, 64);
+            tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(button_start_tournament);
             tabPage1.Controls.Add(button6);
             tabPage1.Controls.Add(listBox1);
@@ -259,6 +261,16 @@
             showGamesToolStripMenuItem.Text = "Show Games";
             showGamesToolStripMenuItem.Click += showGamesToolStripMenuItem_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(454, 8);
+            label1.Name = "label1";
+            label1.Size = new Size(288, 45);
+            label1.TabIndex = 10;
+            label1.Text = "Add an even amount of players in the list (4 or more).\r\nThen click \"Start Tournament\"\r\nYou can hit enter for fasting Adding.";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -303,5 +315,6 @@
         private ToolStripMenuItem showGamesToolStripMenuItem;
         private Button button1;
         private Button button2;
+        private Label label1;
     }
 }
