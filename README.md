@@ -2,7 +2,7 @@
 manage your chess tournament
 
 How to use:
-- Enter an even amount of player names. A name must consist of 2 or 3 parts
+- Enter a 4-or-more amount of player names. A name must consist of 2 or 3 parts
 - When all players were entered in the list click Start tournament
 - all players will be automatically paired
 - the pairs will appear as buttons
