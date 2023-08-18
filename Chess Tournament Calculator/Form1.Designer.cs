@@ -269,7 +269,7 @@
             label1.Name = "label1";
             label1.Size = new Size(288, 45);
             label1.TabIndex = 10;
-            label1.Text = "Add an even amount of players in the list (4 or more).\r\nThen click \"Start Tournament\"\r\nYou can hit enter for fasting Adding.";
+            label1.Text = "Add an even amount of players in the list (4 or more).\r\nThen click \"Start Tournament\"\r\nYou can hit enter for faster Adding.";
             // 
             // Form1
             // 
