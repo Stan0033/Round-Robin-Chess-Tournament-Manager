@@ -1,5 +1,4 @@
 Pairings for round 1:
 
-1. BYE - stan five
-2. stan one - stan four
-3. stna two - stan trhee
+1. stan one - stan four
+2. stan two - stan three

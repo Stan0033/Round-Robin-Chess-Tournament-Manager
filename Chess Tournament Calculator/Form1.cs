@@ -307,7 +307,7 @@ namespace Chess_Tournament_Calculator
                     count_games_this_round += 1;
                     //--------------------------------------
 
-                    if (count_games_this_round - OddPlayers == Real_Pairs / 2)
+                    if (count_games_this_round - OddPlayers == Real_Pairs)
                     // if the rounds played are ==equal to the players, then it's tiem for new round
                     {
                         Current_Round++;
