@@ -38,25 +38,28 @@
             label2 = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            button7 = new Button();
             label1 = new Label();
             button_start_tournament = new Button();
             tabPage2 = new TabPage();
             group_CurrentPairs = new GroupBox();
-            panel_Pairings = new Panel();
-            button3 = new Button();
             button2 = new Button();
             button1 = new Button();
             groupBox1 = new GroupBox();
             listBox_standings = new ListBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
             showGamesToolStripMenuItem = new ToolStripMenuItem();
+            panel1 = new Panel();
+            panel_Pairings = new Panel();
+            button3 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             group_CurrentPairs.SuspendLayout();
-            panel_Pairings.SuspendLayout();
             groupBox1.SuspendLayout();
             contextMenuStrip1.SuspendLayout();
+            panel1.SuspendLayout();
+            panel_Pairings.SuspendLayout();
             SuspendLayout();
             // 
             // button6
@@ -140,6 +143,7 @@
             tabPage1.BackColor = Color.FromArgb(64, 64, 64);
             tabPage1.BackgroundImage = (Image)resources.GetObject("tabPage1.BackgroundImage");
             tabPage1.BackgroundImageLayout = ImageLayout.Stretch;
+            tabPage1.Controls.Add(button7);
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(button_start_tournament);
             tabPage1.Controls.Add(button6);
@@ -153,6 +157,18 @@
             tabPage1.Size = new Size(920, 481);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Setup";
+            // 
+            // button7
+            // 
+            button7.Cursor = Cursors.Hand;
+            button7.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button7.Location = new Point(236, 160);
+            button7.Name = "button7";
+            button7.Size = new Size(212, 34);
+            button7.TabIndex = 11;
+            button7.Text = "From Text...";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // label1
             // 
@@ -193,7 +209,9 @@
             // group_CurrentPairs
             // 
             group_CurrentPairs.Controls.Add(panel_Pairings);
+            group_CurrentPairs.Controls.Add(panel1);
             group_CurrentPairs.Dock = DockStyle.Fill;
+            group_CurrentPairs.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             group_CurrentPairs.ForeColor = Color.White;
             group_CurrentPairs.Location = new Point(3, 3);
             group_CurrentPairs.Name = "group_CurrentPairs";
@@ -202,37 +220,14 @@
             group_CurrentPairs.TabStop = false;
             group_CurrentPairs.Text = "Current Games";
             // 
-            // panel_Pairings
-            // 
-            panel_Pairings.Controls.Add(button3);
-            panel_Pairings.Controls.Add(button2);
-            panel_Pairings.Controls.Add(button1);
-            panel_Pairings.Dock = DockStyle.Fill;
-            panel_Pairings.Location = new Point(3, 19);
-            panel_Pairings.Name = "panel_Pairings";
-            panel_Pairings.Size = new Size(556, 453);
-            panel_Pairings.TabIndex = 0;
-            // 
-            // button3
-            // 
-            button3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.ForeColor = Color.Black;
-            button3.Location = new Point(3, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(478, 32);
-            button3.TabIndex = 2;
-            button3.Text = "Tiebreaks detected. Start a tiebreaks tournament?";
-            button3.UseVisualStyleBackColor = true;
-            button3.Visible = false;
-            // 
             // button2
             // 
             button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button2.Cursor = Cursors.Hand;
             button2.ForeColor = Color.Black;
-            button2.Location = new Point(335, 427);
+            button2.Location = new Point(211, 57);
             button2.Name = "button2";
-            button2.Size = new Size(218, 23);
+            button2.Size = new Size(342, 34);
             button2.TabIndex = 1;
             button2.Text = "Open Completed Games as  .txt File";
             button2.UseVisualStyleBackColor = true;
@@ -243,9 +238,9 @@
             button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button1.Cursor = Cursors.Hand;
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(335, 398);
+            button1.Location = new Point(211, 15);
             button1.Name = "button1";
-            button1.Size = new Size(218, 23);
+            button1.Size = new Size(342, 36);
             button1.TabIndex = 0;
             button1.Text = "Open Current round Pairings .txt File";
             button1.UseVisualStyleBackColor = true;
@@ -255,6 +250,7 @@
             // 
             groupBox1.Controls.Add(listBox_standings);
             groupBox1.Dock = DockStyle.Right;
+            groupBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox1.ForeColor = Color.White;
             groupBox1.Location = new Point(565, 3);
             groupBox1.Name = "groupBox1";
@@ -272,9 +268,9 @@
             listBox_standings.ForeColor = Color.White;
             listBox_standings.FormattingEnabled = true;
             listBox_standings.ItemHeight = 25;
-            listBox_standings.Location = new Point(3, 19);
+            listBox_standings.Location = new Point(3, 29);
             listBox_standings.Name = "listBox_standings";
-            listBox_standings.Size = new Size(346, 453);
+            listBox_standings.Size = new Size(346, 443);
             listBox_standings.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -289,6 +285,38 @@
             showGamesToolStripMenuItem.Size = new Size(142, 22);
             showGamesToolStripMenuItem.Text = "Show Games";
             showGamesToolStripMenuItem.Click += showGamesToolStripMenuItem_Click;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(button2);
+            panel1.Controls.Add(button1);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(3, 378);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(556, 94);
+            panel1.TabIndex = 1;
+            // 
+            // panel_Pairings
+            // 
+            panel_Pairings.AutoScroll = true;
+            panel_Pairings.Controls.Add(button3);
+            panel_Pairings.Dock = DockStyle.Fill;
+            panel_Pairings.Location = new Point(3, 29);
+            panel_Pairings.Name = "panel_Pairings";
+            panel_Pairings.Size = new Size(556, 349);
+            panel_Pairings.TabIndex = 2;
+            // 
+            // button3
+            // 
+            button3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.ForeColor = Color.Black;
+            button3.Location = new Point(3, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(478, 32);
+            button3.TabIndex = 2;
+            button3.Text = "Tiebreaks detected. Start a tiebreaks tournament?";
+            button3.UseVisualStyleBackColor = true;
+            button3.Visible = false;
             // 
             // Form1
             // 
@@ -307,9 +335,10 @@
             tabPage1.PerformLayout();
             tabPage2.ResumeLayout(false);
             group_CurrentPairs.ResumeLayout(false);
-            panel_Pairings.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             contextMenuStrip1.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel_Pairings.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -329,12 +358,14 @@
         private GroupBox groupBox1;
         private ListBox listBox_standings;
         private Button button_start_tournament;
-        private Panel panel_Pairings;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem showGamesToolStripMenuItem;
         private Button button1;
         private Button button2;
         private Label label1;
+        private Button button7;
+        private Panel panel_Pairings;
         private Button button3;
+        private Panel panel1;
     }
 }

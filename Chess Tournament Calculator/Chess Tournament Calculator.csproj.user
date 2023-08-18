@@ -4,6 +4,9 @@
     <Compile Update="ButtonForPair.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="enterlines.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="enterresult.cs">
       <SubType>Form</SubType>
     </Compile>

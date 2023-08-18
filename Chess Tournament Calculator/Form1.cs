@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using static System.Windows.Forms.LinkLabel;
@@ -554,6 +555,74 @@ namespace Chess_Tournament_Calculator
             playersWithHighestScore = playerScores.Where(kvp => kvp.Value == maxScore).Select(kvp => kvp.Key).ToList();
 
             return playersWithHighestScore;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            using (var v = new enterlines())
+            {
+                v.ShowDialog();
+                if (v.DialogResult == DialogResult.OK)
+                {
+                    string lines = v.richTextBox1.Text;
+                    ProcessLines(lines);
+                    if (listBox_players.Items.Count >= 4)
+                    {
+                        button_start_tournament.Enabled = true;
+                    }
+                }
+            }
+        }
+        public void ProcessLines(string lines)
+        {
+            string[] inputLines = lines.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+
+            foreach (string line in inputLines)
+            {
+                string trimmedLine = line.Trim();
+                if (!string.IsNullOrWhiteSpace(trimmedLine))
+                {
+                    string[] words = trimmedLine.Split(' ');
+
+                    if (words.Length >= 2 && words.Length <= 3)
+                    {
+                        bool isValid = true;
+
+                        foreach (string word in words)
+                        {
+                            if (!IsCapitalizedWord(word))
+                            {
+                                isValid = false;
+                                break;
+                            }
+                        }
+
+                        if (isValid)
+                        {
+                            string name = string.Join(" ", words);
+
+                            if (listBox_players != null && !listBox_players.Items.Contains(name))
+                            {
+                                listBox_players.Items.Add(name);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid line: " + line, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid line: " + line, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private static bool IsCapitalizedWord(string word)
+        {
+            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+            return word.Length > 0 && char.IsUpper(word[0]) && textInfo.ToUpper(word[0]) == word[0];
         }
     }
 }
