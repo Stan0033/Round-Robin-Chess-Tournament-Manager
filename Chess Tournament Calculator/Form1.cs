@@ -25,7 +25,7 @@ namespace Chess_Tournament_Calculator
             schedule = new List<List<string>>();
             Player_Scores = new Dictionary<Player, double>();
             count_games_this_round = 0;
-            OddPlayers=0;
+            OddPlayers = 0;
             Real_Pairs = 0;
 
         }
@@ -47,7 +47,7 @@ namespace Chess_Tournament_Calculator
 
             }
             textBox1.Text = string.Empty;
-            if (listBox_players.Items.Count >= 4  )
+            if (listBox_players.Items.Count >= 4)
             {
                 button_start_tournament.Enabled = true;
             }
@@ -114,7 +114,7 @@ namespace Chess_Tournament_Calculator
                 listBox_players.Items.RemoveAt(pos);
 
             }
-            if (listBox_players.Items.Count >= 4 )
+            if (listBox_players.Items.Count >= 4)
             {
                 button_start_tournament.Enabled = true;
             }
@@ -126,7 +126,7 @@ namespace Chess_Tournament_Calculator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (listBox_players.Items.Count >= 4  )
+            if (listBox_players.Items.Count >= 4)
             {
                 List<string> list = new List<string>();
                 foreach (string field in listBox_players.Items) { list.Add(field); }
@@ -173,7 +173,7 @@ namespace Chess_Tournament_Calculator
 
                 }
                 textBox1.Text = string.Empty;
-                if (listBox_players.Items.Count >= 4  )
+                if (listBox_players.Items.Count >= 4)
                 {
                     button_start_tournament.Enabled = true;
                 }
@@ -189,7 +189,7 @@ namespace Chess_Tournament_Calculator
 
         private void Start_Tournament_click(object sender, EventArgs e)
         {
-            
+
             tabControl1.TabPages[0].Enabled = false;
             tabControl1.TabPages[1].Enabled = true;
             tabControl1.SelectedTab = tabControl1.TabPages[1];
@@ -198,14 +198,14 @@ namespace Chess_Tournament_Calculator
                 Player bye = new Player();
                 bye.Name = "BYE";
                 Players.Add(bye);
-                Player_Scores.Add(bye,0);
+                Player_Scores.Add(bye, 0);
                 Games.Add(bye, new List<Game>());
                 OddPlayers = 1;
                 Real_Pairs = (listBox_players.Items.Count - 1) / 2;
             }
             else
             {
-                Real_Pairs = listBox_players.Items.Count  / 2;
+                Real_Pairs = listBox_players.Items.Count / 2;
             }
             foreach (string field in listBox_players.Items)
             {
@@ -222,14 +222,14 @@ namespace Chess_Tournament_Calculator
 
             tabControl1.TabPages[1].Text = $"Round {Current_Round + 1}/{Players.Count}";
             schedule = GenerateRoundRobinSchedule(Players);
-           
+
             GenerateButtonsForPlayers(Current_Round);
             // MessageBox.Show(schedule[0].Count.ToString() + " pairings");
             //  MessageBox.Show(Games. + " players");
         }
         public void GenerateButtonsForPlayers(int whichRound)
         {
-             
+
             int forname = 0;
             int currentPosition = 10;
             foreach (string pair in schedule[whichRound])
@@ -237,7 +237,7 @@ namespace Chess_Tournament_Calculator
                 if (pair.Contains("BYE"))
                 {
                     string[] players = pair.Split(" - ");
-                    int byeIndex = players[0] == "BYE"? 0 : 1;
+                    int byeIndex = players[0] == "BYE" ? 0 : 1;
                     int playerIndex = players[0] == "BYE" ? 1 : 0;
                     Game byeGame = new Game();
                     byeGame.Player_White = players[0];
@@ -258,7 +258,7 @@ namespace Chess_Tournament_Calculator
 
                         }
                     }
-                    
+
                     continue;
                 }
                 ButtonForPair button = new ButtonForPair();
@@ -350,7 +350,7 @@ namespace Chess_Tournament_Calculator
                 if (player.Key.Name == "BYE") { continue; }
                 foreach (var game in player.Value)
                 {
-                    
+
                     if (game.Player_White == player.Key.Name)
                     {
                         if (game.Result == 1) { score += 1; }
@@ -395,13 +395,23 @@ namespace Chess_Tournament_Calculator
             int numPlayers = players.Count;
             int numRounds = numPlayers - 1;
 
+            bool isWhiteTurn = true; // Initialize as true for the first round
+
             for (int round = 0; round < numRounds; round++)
             {
                 List<string> roundPairings = new List<string>();
 
                 for (int i = 0; i < numPlayers / 2; i++)
                 {
-                    string pairing = $"{players[i].Name} - {players[numPlayers - 1 - i].Name}";
+                    string pairing;
+                    if (isWhiteTurn)
+                    {
+                        pairing = $"{players[i].Name} - {players[numPlayers - 1 - i].Name}";
+                    }
+                    else
+                    {
+                        pairing = $"{players[numPlayers - 1 - i].Name} - {players[i].Name}";
+                    }
                     roundPairings.Add(pairing);
                 }
 
@@ -411,13 +421,24 @@ namespace Chess_Tournament_Calculator
                 Player lastPlayer = players[numPlayers - 1];
                 players.RemoveAt(numPlayers - 1);
                 players.Insert(1, lastPlayer);
+
+                // Toggle the color for the next round
+                isWhiteTurn = !isWhiteTurn;
             }
 
             // Add the last round (odd player count)
             List<string> lastRoundPairings = new List<string>();
             for (int i = 0; i < numPlayers / 2; i++)
             {
-                string pairing = $"{players[i].Name} - {players[numPlayers - 1 - i].Name}";
+                string pairing;
+                if (isWhiteTurn)
+                {
+                    pairing = $"{players[i].Name} - {players[numPlayers - 1 - i].Name}";
+                }
+                else
+                {
+                    pairing = $"{players[numPlayers - 1 - i].Name} - {players[i].Name}";
+                }
                 lastRoundPairings.Add(pairing);
             }
             schedule.Add(lastRoundPairings);
@@ -480,7 +501,7 @@ namespace Chess_Tournament_Calculator
 
         private void ViewCompletedGamesTXT_Click(object sender, EventArgs e)
         {
-           // MessageBox.Show(Games[Games.Keys.FirstOrDefault(x => x.Name == "BYE")].Count.ToString());
+            // MessageBox.Show(Games[Games.Keys.FirstOrDefault(x => x.Name == "BYE")].Count.ToString());
             //return;
             string content = string.Empty;
             string filename = "past_games.txt";

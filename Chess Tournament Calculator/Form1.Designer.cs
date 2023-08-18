@@ -49,6 +49,7 @@
             listBox_standings = new ListBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
             showGamesToolStripMenuItem = new ToolStripMenuItem();
+            button3 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -200,6 +201,7 @@
             // 
             // panel_Pairings
             // 
+            panel_Pairings.Controls.Add(button3);
             panel_Pairings.Controls.Add(button2);
             panel_Pairings.Controls.Add(button1);
             panel_Pairings.Dock = DockStyle.Fill;
@@ -271,6 +273,18 @@
             showGamesToolStripMenuItem.Text = "Show Games";
             showGamesToolStripMenuItem.Click += showGamesToolStripMenuItem_Click;
             // 
+            // button3
+            // 
+            button3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button3.ForeColor = Color.Black;
+            button3.Location = new Point(3, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(478, 32);
+            button3.TabIndex = 2;
+            button3.Text = "Tiebreaks detected. Start a tiebreaks tournament?";
+            button3.UseVisualStyleBackColor = true;
+            button3.Visible = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -316,5 +330,6 @@
         private Button button1;
         private Button button2;
         private Label label1;
+        private Button button3;
     }
 }
