@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
@@ -8,6 +9,7 @@ namespace Chess_Tournament_Calculator
     public partial class Form1 : Form
     {
         List<Player>? Players;
+        Dictionary<Player, double> Player_Scores;
         Dictionary<Player, List<Game>> Games;
         int OddPlayers;
         int Current_Round;
@@ -21,6 +23,7 @@ namespace Chess_Tournament_Calculator
             Games = new Dictionary<Player, List<Game>>();
             Current_Round = 0;
             schedule = new List<List<string>>();
+            Player_Scores = new Dictionary<Player, double>();
             count_games_this_round = 0;
             OddPlayers=0;
             Real_Pairs = 0;
@@ -195,6 +198,7 @@ namespace Chess_Tournament_Calculator
                 Player bye = new Player();
                 bye.Name = "BYE";
                 Players.Add(bye);
+                Player_Scores.Add(bye,0);
                 Games.Add(bye, new List<Game>());
                 OddPlayers = 1;
                 Real_Pairs = (listBox_players.Items.Count - 1) / 2;
@@ -209,6 +213,7 @@ namespace Chess_Tournament_Calculator
                 Player P = new Player();
                 P.Name = field;
                 Players.Add(P);
+                Player_Scores.Add(P, 0);
                 List<Game> game = new List<Game>();
                 Games.Add(P, game);
 
@@ -510,6 +515,24 @@ namespace Chess_Tournament_Calculator
             // Write the content to the file and open it
             File.WriteAllText(filename, content);
             Process.Start("notepad.exe", filename);
+        }
+        public static List<Player> FindPlayersWithHighestScore(Dictionary<Player, int> playerScores)
+        {
+            // give Player_Scores
+            List<Player> playersWithHighestScore = new List<Player>();
+
+            if (playerScores.Count == 0)
+            {
+                return playersWithHighestScore;
+            }
+
+            // Find the highest score
+            int maxScore = playerScores.Max(kvp => kvp.Value);
+
+            // Find players with the highest score
+            playersWithHighestScore = playerScores.Where(kvp => kvp.Value == maxScore).Select(kvp => kvp.Key).ToList();
+
+            return playersWithHighestScore;
         }
     }
 }
