@@ -2,6 +2,8 @@
 manage your chess tournament.
 A round-robin tournament is a chess tournament where each player plays every otehr player exactly once.
 
+start .exe from \bin\Debug\net6.0-windows
+
 How to use:
 - Enter a 4-or-more amount of player names. A name must consist of 2 or 3 parts
 - When all players were entered in the list click Start tournament
