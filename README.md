@@ -1,4 +1,5 @@
 # Round-Robin-Chess-Tournament-Manager
 manage your chess tournament
 
-![image][(https://i.ibb.co/Z2kvNrC/Untitled.png)
+
+![Solve]([https://i.ibb.co/ZVd6txZ/scr1.png](https://i.ibb.co/Z2kvNrC/Untitled.png)https://i.ibb.co/Z2kvNrC/Untitled.png)
