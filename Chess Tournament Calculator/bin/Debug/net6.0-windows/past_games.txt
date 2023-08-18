@@ -1,3 +1,24 @@
 Round 1
-Magnus Carlsen - Hu Yifan - 1-0 by Checkmate
-Hikaru Nakamura - Devin Townsend - 1-0 by Checkmate
+BYE - stan five - 0-1 by Forfeit
+stan one - stan four - 1-0 by Checkmate
+stan two - stan three - 1-0 by Checkmate
+Round 2
+stan four - BYE - 1-0 by Forfeit
+stan two - stan one - 1-0 by Checkmate
+stan three - stan five - 1-0 by Checkmate
+Round 3
+BYE - stan three - 0-1 by Forfeit
+stan five - stan one - 1-0 by Checkmate
+stan four - stan two - 1-0 by Checkmate
+Round 4
+stan two - BYE - 1-0 by Forfeit
+stan one - stan three - 1-0 by Checkmate
+stan five - stan four - 1-0 by Checkmate
+Round 5
+BYE - stan one - 0-1 by Forfeit
+stan two - stan five - 1-0 by Checkmate
+stan three - stan four - 1-0 by Checkmate
+Round 6
+stan five - BYE - 1-0 by Forfeit
+stan four - stan one - 1-0 by Checkmate
+stan three - stan two - 1-0 by Checkmate
