@@ -573,10 +573,11 @@ namespace Chess_Tournament_Calculator
                 }
             }
         }
-        public void ProcessLines(string lines)
+
+        public   void ProcessLines(string lines)
         {
             string[] inputLines = lines.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-
+            
             foreach (string line in inputLines)
             {
                 string trimmedLine = line.Trim();
@@ -587,13 +588,20 @@ namespace Chess_Tournament_Calculator
                     if (words.Length >= 2 && words.Length <= 3)
                     {
                         bool isValid = true;
+                        List<string> errorMessages = new List<string>();
 
                         foreach (string word in words)
                         {
                             if (!IsCapitalizedWord(word))
                             {
                                 isValid = false;
-                                break;
+                                errorMessages.Add("Each word must start with a capital letter.");
+                            }
+
+                            if (!ContainsOnlyLetters(word))
+                            {
+                                isValid = false;
+                                errorMessages.Add("Each word must contain only letters.");
                             }
                         }
 
@@ -601,19 +609,23 @@ namespace Chess_Tournament_Calculator
                         {
                             string name = string.Join(" ", words);
 
-                            if (listBox_players != null && !listBox_players.Items.Contains(name))
+                            if (!listBox_players.Items.Contains(name))
                             {
                                 listBox_players.Items.Add(name);
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Invalid line: " + line, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            string errorMessage = "Invalid line: " + line + Environment.NewLine;
+                            errorMessage += string.Join(Environment.NewLine, errorMessages.Distinct());
+
+                            MessageBox.Show(errorMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Invalid line: " + line, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Invalid line: " + line + Environment.NewLine +
+                                        "Line must contain 2 to 3 words separated by spaces.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -623,6 +635,11 @@ namespace Chess_Tournament_Calculator
         {
             TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
             return word.Length > 0 && char.IsUpper(word[0]) && textInfo.ToUpper(word[0]) == word[0];
+        }
+
+        private static bool ContainsOnlyLetters(string word)
+        {
+            return word.All(char.IsLetter);
         }
     }
 }
