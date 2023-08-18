@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(enterlines));
             richTextBox1 = new RichTextBox();
             button1 = new Button();
             panel1 = new Panel();
@@ -87,13 +88,14 @@
             ClientSize = new Size(384, 346);
             Controls.Add(panel1);
             Controls.Add(richTextBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MaximumSize = new Size(400, 385);
             MinimizeBox = false;
             MinimumSize = new Size(400, 385);
             Name = "enterlines";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "enterlines";
+            Text = "Enter Names on each line";
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
