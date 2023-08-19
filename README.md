@@ -1,6 +1,6 @@
 # Round-Robin-Chess-Tournament-Manager
 manage your chess tournament.
-A round-robin tournament is a chess tournament where each player plays every otehr player exactly once.
+A round-robin tournament is a chess tournament where each player plays every other player exactly once.
 
 start .exe from \bin\Debug\net6.0-windows
 
